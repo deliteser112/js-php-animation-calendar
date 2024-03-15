@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hello World Animation</title>
+<style>
+    #div1, #div2 {
+        display: inline-block;
+        font-size: 24px;
+        position: relative;
+    }
+
+    .animated {
+        position: absolute;
+        transition: transform 0.5s ease-in-out;
+    }
+</style>
+</head>
+<body>
+<div id="div1">Hello World</div>
+<div id="div2"></div>
+<button id="myButton">Animate</button>
+
+<script>
+var button = document.getElementById("myButton");
+button.addEventListener("click", function() {
+    animateHelloWorld();
+});
+
+function animateHelloWorld() {
+    const phrase = "Hello World";
+    const div1 = document.getElementById('div1');
+    const div2 = document.getElementById('div2');
+    
+    for (let i = 0; i < phrase.length; i++) {
+        const char = phrase[i];
+        const delay = (i % 2 === 0) ? 1 : (4 + Math.floor(i / 2));
+        
+        setTimeout(() => {
+            const span = document.createElement('span');
+            span.textContent = char;
+            span.classList.add('animated');
+            
+            if (i % 2 === 0) {
+                setTimeout(() => {
+                    span.style.transform = `translate(0, ${div2.offsetHeight}px)`;
+                }, 1000);
+            } else {
+                span.style.transform = `translate(0, ${div1.offsetHeight}px)`;
+            }
+            
+            div1.appendChild(span);
+        }, delay * 1000);
+    }
+}
+</script>
+</body>
+</html>
