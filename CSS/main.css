@@ -8,7 +8,7 @@
   .blackboard {
     position: relative;
     background-color: black;
-    padding: 243px 90px;
+    padding: 260px 70px;
     border-radius: 10px;
   }
   
@@ -21,11 +21,14 @@
   
   .circle {
     position: absolute;
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    top: 43%;
+    height: 80px;
     background-color: white;
     border-radius: 50%;
-    animation: moveCircle 4s linear infinite;
+    margin-left:50px;
+    mix-blend-mode: difference;
+    animation: moveCircle 8s linear infinite;
   }
   
   @keyframes moveCircle {
@@ -33,9 +36,10 @@
       left: 0;
     }
     50% {
-      left: calc(100% - 50px);
+      left: calc(100% - 180px);
     }
     100% {
       left: 0;
+      /* right:30; */
     }
   }
